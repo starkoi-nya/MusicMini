@@ -1,0 +1,33 @@
+{
+	"name": "musicmini",
+	"version": "1.0.0",
+	"author": "starkoi",
+	"private": false,
+	"scripts": {
+		"start": "electron .",
+		"build": "electron-builder"
+	},
+	"main": "main.js",
+	"build": {
+		"appId": "com.starkoi.app",
+		"directories": {
+			"output": "builder"
+		},
+		"win": {
+			"icon": "dist/favicon.ico",
+			"target": [
+				"nsis",
+				"zip"
+			]
+		},
+		"files": [
+			"dist/**/*",
+			"main.js",
+			"preload.js"
+		]
+	},
+	"dependencies": {},
+	"devDependencies": {
+		"electron": "13.1.7"
+	}
+}

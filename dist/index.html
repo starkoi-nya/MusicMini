@@ -1,0 +1,172 @@
+﻿<!DOCTYPE html>
+<!--OBS内嵌播放器，版本1.0.0-->
+<!--地址栏参数：SongListID，RoomID,例子:http://127.0.0.1?SongListID=959808737&RoomID=23165125 -->
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link href="layui/css/layui.css" rel="stylesheet" media="all" />
+    <script src="js/jquery-3.4.1.js"></script>
+    <script src="layui/layui.js"></script>
+    <script src="js/lrc-file-parser.min.js"></script>
+    <script src="layui/lay/modules/form.js"></script>
+    <script src="layui/lay/modules/slider.js"></script>
+    <script src="layui/lay/modules/element.js"></script>
+
+    <link href="css/index.css" rel="stylesheet" />
+    <link href="css/switch.css" rel="stylesheet" />
+    <link href="css/animation.css" rel="stylesheet" />
+    <link href="css/layuiFix.css" rel="stylesheet" />
+    <script src="js/getUrl.js"></script>
+    <script src="js/playerSetting.js"></script>
+    <script src="js/setting.js"></script>
+    <script src="js/visualization.js"></script>
+    <script src="js/songList.js"></script>
+    <script src="js/musicPlay.js"></script>
+    <script src="js/playMode.js"></script>
+    <script src="js/rogressBar.js"></script>
+    <script src="js/topMsg.js"></script>
+    <script src="js/danMu.js"></script>
+    <script src="js/orderList.js"></script>
+    <title>音乐播放器</title>
+</head>
+<body>
+    <!--音频-->
+    <audio id="Music" class="music" crossOrigin="anonymous" src="mp3/TitleMusic.mp3"></audio>
+
+    <!--背景--->
+    <div id="BackGround" class="backGround">
+        <div id="Back"></div>
+        <!--主DIV-->
+        <div id="Main" class="main">
+            <!--上弹出信息-->
+            <div id="TopMsg" class="topMsg"></div>
+
+            <!--左侧方形菜单-->
+            <div class="squareMenu">
+                <!--上弹出信息mini-->
+                <div id="TopMsgMini" class="topMsgMini"></div>
+
+                <!--方形内容-->
+                <div class="squareMenuInside">
+
+                    <!--播放控件背景-->
+                    <div class="playMenuBackground">
+
+                        <!--播放控件-->
+                        <div class="playMenu">
+                            <div id="SettingButton" class="playMenuButton layui-btn layui-btn-primary"><div id="SettingButtonIcon" class="playMenuButtonIcon layui-icon">&#xe620;</div></div>
+                            <div id="ListButton" class="playMenuButton layui-btn layui-btn-primary"><div id="ListButtonIcon" class="playMenuButtonIcon layui-icon">&#xe60a;</div></div>
+                            <div id="BeforeButton" class="playMenuButton layui-btn layui-btn-primary"><div id="BeforeButtonIcon" class="playMenuButtonIcon layui-icon">&#xe603;</div></div>
+                            <div id="PlayButton" class="playMenuButton layui-btn layui-btn-primary"><div id="PlayButtonIcon" class="playMenuButtonIcon layui-icon">&#xe652;</div></div>
+                            <div id="NextButton" class="playMenuButton layui-btn layui-btn-primary"><div id="NextButtonIcon" class="playMenuButtonIcon layui-icon">&#xe602;</div></div>
+                        </div>
+                    </div>
+                    <!--拖拽层-->
+                    <div id="drag"></div>
+
+                    <!--图片背景-->
+                    <div id="imgBackground">
+                        <div class="imgBackground">
+
+                            <!--歌曲图片-->
+                            <div id="SongImg" class="songImg"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--弹出菜单-->
+                <div class="mainMenu layui-form layui-form-pane">
+                    <!--直播间编号-->
+                    <label id="LiveRoomNumLab" class="layui-form-label">房间绑定</label>
+                    <input id="LiveRoomNumInput" class="layui-input" type="text" name="price_min" placeholder="请输入直播间编号" autocomplete="off">
+                    <div type="button" id="LiveRoomNumInputButton" class="layui-btn">绑定</div>
+                    <!--弹幕控制开关-->
+                    <label id="DanmuCtrlLab" class="layui-form-label">弹幕控制</label>
+                    <div id="DanmuCtrlSwichDiv" class="layui-form-label">
+                        <label class="switch">
+                            <input id="DanmuCtrlSwich" type="checkbox" lay-ignore checked>
+                            <div class="slider"></div>
+                        </label>
+                    </div>
+                    <!--弹幕点歌开关-->
+                    <label id="DanmuOrderLab" class="layui-form-label">弹幕点歌</label>
+                    <div id="DanmuOrderSwichDiv" class="layui-form-label">
+                        <label class="switch">
+                            <input id="DanmuOrderSwich" type="checkbox" lay-ignore dischecked>
+                            <div class="slider"></div>
+                        </label>
+                    </div>
+                    <!--播放模式选择-->
+                    <label id="PlayModeLab" class="layui-form-label">播放模式</label>
+                    <select id="PlayModeCheck" lay-ignore>
+                        <option value="0" selected>列表循环</option>
+                        <option value="1">单曲循环</option>
+                        <option value="2">随机播放</option>
+                    </select>
+                    <div type="button" id="PlayModeButton" class="layui-btn">确定</div>
+                    <!--频谱开关-->
+                    <label id="SpectrumLab" class="layui-form-label">频谱开关</label>
+                    <div id="SpectrumSwichDiv" class="layui-form-label">
+                        <label class="switch">
+                            <input id="SpectrumSwich" type="checkbox" lay-ignore checked>
+                            <div class="slider"></div>
+                        </label>
+                    </div>
+                    <!--mini模式开关-->
+                    <label id="MiniLab" class="layui-form-label">mini模式</label>
+                    <div id="MiniSwichDiv" class="layui-form-label">
+                        <label class="switch">
+                            <input id="MiniSwich" type="checkbox" lay-ignore dischecked>
+                            <div class="slider"></div>
+                        </label>
+                    </div>
+                    <!--歌单/歌曲ID提交-->
+                    <label id="SongOrderLab" class="layui-form-label">歌单指定</label>
+                    <input id="SongOrderInput" class="layui-input" name="price_min" placeholder="请输入歌单编号" autocomplete="off">
+                    <div id="SongOrderButton" type="button" class="layui-btn">提交</div>
+                </div>
+
+                <!--弹出歌单-->
+                <div id="SongList" class="songList">
+                    <div id="SongListCell0" class="songListCell songListCell2"><label style="text-align:center;width:100%"> 还没有歌单</label></div>
+                </div>
+
+                <!--右侧底边栏-->
+                <div id="RightBottom" class="rightBottom">
+
+                    <!--进度条-->
+                    <div id="RogressBarDiv" class="rogressBarDiv layui-progress rogress-bar" lay-filter="RogressBar">
+                        <div id="RogressBar" class="layui-progress-bar "></div>
+                    </div>
+
+                    <!--歌曲信息-->
+                    <div class="songInfo">
+                        <div id="SongName" class="songName">音乐播放器</div>
+                        <hr class="songInfoHr" />
+                        <div id="SongArtist" class="songArtist">星恋幻象</div>
+                    </div>
+
+                    <!--频谱-->
+                    <div id="Visualization" class="visualization">
+                        <canvas id="VisualizationCanvas"></canvas>
+                    </div>
+
+                    <!--歌词-->
+                    <div class="lyric">
+                        <!--原文-->
+                        <div id="LyricText" class="lyricText" style="top:50%;font-size: calc(38.2vw / 1.382 * 0.12)">
+                            愿每天对你而言，都是美好的一天。
+                        </div>
+                        <!--水平线-->
+                        <hr id="LyricHr" class="lyricHr" />
+                        <!--翻译-->
+                        <div id="LyricTextTranslation" class="lyricTextTranslation">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

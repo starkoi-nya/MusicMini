@@ -1,0 +1,85 @@
+﻿.switch {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    height: calc(((( 38.2vw / 1.382) / 5) / 6) * 4);
+    width: calc(((100vw - (38.2vw / 1.382)) / 4) / 2);
+}
+
+    .switch input {
+        display: none !important;
+    }
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: calc(((( 38.2vw / 1.382) / 5) / 6) * 3);
+        width: calc(((( 38.2vw / 1.382) / 5) / 6) * 3);
+        left: calc((( 38.2vw / 1.382) / 5) / 12);
+        bottom: calc((( 38.2vw / 1.382) / 5) / 12);
+        background-color: white;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+
+input:checked + .slider {
+    background-color: #5FB878;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(calc((((100vw - (38.2vw / 1.382)) / 4) / 2) - (((( 38.2vw / 1.382) / 5) / 6) * 4)));
+    -ms-transform: translateX(calc((((100vw - (38.2vw / 1.382)) / 4) / 2) - (((( 38.2vw / 1.382) / 5) / 6) * 4)));
+    transform: translateX(calc((((100vw - (38.2vw / 1.382)) / 4) / 2) - (((( 38.2vw / 1.382) / 5) / 6) * 4)));
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: calc(((( 38.2vw / 1.382) / 5) / 6) * 4);
+}
+
+    .slider.round:before {
+        border-radius: 50%;
+    }
+
+/*
+<h2>开关切换</h2>
+
+<label class="switch">
+  <input type="checkbox">
+  <div class="slider"></div>
+</label>
+
+<label class="switch">
+  <input type="checkbox" checked>
+  <div class="slider"></div>
+</label><br><br>
+
+<label class="switch">
+  <input type="checkbox">
+  <div class="slider round"></div>
+</label>
+
+<label class="switch">
+  <input type="checkbox" checked>
+  <div class="slider round"></div>
+</label>
+    */

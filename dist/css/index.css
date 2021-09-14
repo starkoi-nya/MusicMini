@@ -1,0 +1,821 @@
+﻿/*背景*/
+body {
+    background: none;
+    pointer-events: none;
+}
+.backGround {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    zoom: 1;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    /*background-image: url(../img/testimg.png);*/
+    background-color: rgba(100,100,0,0);
+}
+    .backGround * {
+
+    }
+
+/*主DIV*/
+.main {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: calc(38.2vw / 1.382);
+    border-radius: calc(38.2vw / 1.382 / 10);
+    z-index: 1;
+}
+/*上弹出信息*/
+.topMsg {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 100%;
+    width: 90%;
+    margin: auto;
+    height: calc(38.2vw / 1.382 / 5);
+    border-radius: calc(38.2vw / 1.382 / 5) calc(38.2vw / 1.382 / 5) 0 0;
+    background-color: rgba(0,0,0,0.5);
+    font-size: calc(38.2vw / 1.382 * 0.15);
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: white;
+    display: none;
+    user-select: none;
+}
+
+    .topMsg a {
+        color: #00b7ee;
+    }
+
+    .topMsg .errMsg {
+        color: #ff4646;
+    }
+
+.topMsgMini {
+    position: absolute;
+    left: 2.82%;
+    bottom: 100%;
+    width: 22%;
+    margin: auto;
+    height: calc(38.2vw / 1.382 / 5);
+    border-radius: calc(38.2vw / 1.382 / 5) calc(38.2vw / 1.382 / 5) 0 0;
+    background-color: rgba(0,0,0,0.5);
+    font-size: calc(38.2vw / 1.382 * 0.15);
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: white;
+    display: none;
+    user-select: none;
+}
+    .topMsgMini a {
+        color: #00b7ee;
+    }
+
+    .topMsgMini .errMsg {
+        color: #ff4646;
+    }
+/*左侧方形菜单*/
+.squareMenu {
+    width: calc(38.2vw / 1.382);
+    height: calc(38.2vw / 1.382);
+    background: #c4c4c4;
+    border-radius: calc(38.2vw / 1.382 / 10) 0px 0px calc(38.2vw / 1.382 / 10);
+    z-index: 3;
+    pointer-events: all;
+}
+/*方形内容*/
+.squareMenuInside {
+    position: absolute;
+    width: calc(38.2vw / 1.382);
+    height: calc(38.2vw / 1.382);
+    z-index: 5;
+    border-radius: calc(38.2vw / 1.382 / 10) 0px 0px calc(38.2vw / 1.382 / 10);
+    overflow: hidden;
+}
+
+.miniTopMsg {
+}
+/*播放控件背景*/
+.playMenuBackground {
+    position: absolute;
+    height: calc(38.2vw / 1.382);
+    width: calc(38.2vw / 1.382);
+    border-radius: calc(38.2vw / 1.382 / 10) 0px 0px calc(38.2vw / 1.382 / 10);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-image: url(../img/playMenuBackground.png);
+    z-index: 10;
+}
+/*图片背景*/
+#imgBackground {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    width: calc(38.2vw / 1.382 * 0.97);
+    height: calc(38.2vw / 1.382 * 0.97);
+    background-color: rgba(0,0,0,0);
+}
+#drag {
+    position: absolute;
+    left: 1%;
+    right: 1%;
+    top: 1%;
+    margin: auto;
+    width: calc(38.2vw / 1.382 * 0.95);
+    height: calc(38.2vw / 1.382 * 0.3);
+    -webkit-app-region: drag; /*Electron窗口拖拽*/
+}
+.imgBackground {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    margin: auto;
+    width: calc(38.2vw / 1.382 * 0.97);
+    height: calc(38.2vw / 1.382 * 0.97);
+    border-radius: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-image: url(../img/imgBackground.png);
+    z-index: 7;
+    animation: turn 10s linear infinite;
+    -webkit-animation: turn 10s linear infinite;
+    animation-play-state: paused;
+    -webkit-animation-play-state: paused;
+}
+/*歌曲图片*/
+.songImg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    width: calc(38.2vw / 1.382 * 0.9);
+    height: calc(38.2vw / 1.382 * 0.9);
+    border-radius: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-image: url(../img/songImg.jpg);
+    z-index: 8;
+}
+/*播放按钮*/
+#SettingButton, #ListButton, #BeforeButton, #PlayButton, #NextButton {
+    margin-left: auto;
+    height: calc(38.2vw / 1.382 * 0.2);
+    border: none;
+    transition: all 0s;
+    padding: 0 0;
+}
+
+#SettingButtonIcon, #ListButtonIcon {
+    color: #808080;
+    font-size: calc(38.2vw / 1.382 * 0.15);
+    text-align: center;
+    line-height: calc(38.2vw / 1.382 * 0.2);
+    margin-right:auto;
+}
+
+#BeforeButtonIcon, #PlayButtonIcon, #NextButtonIcon {
+    color: #ff4646;
+    font-size: calc(38.2vw / 1.382 * 0.15);
+    text-align: center;
+    line-height: calc(38.2vw / 1.382 * 0.2);
+    margin-right: auto;
+}
+/*按钮组定位*/
+/*//////////////////////////////////*/
+#SettingButton {
+    position: absolute;
+    top: 53%;
+    left: 1%;
+    bottom: 27%;
+    right: 79%;
+}
+
+#ListButton {
+    position: absolute;
+    top: 53%;
+    left: 79%;
+    bottom: 27%;
+    right: 1%;
+}
+
+#BeforeButton {
+    position: absolute;
+    top: 79%;
+    left: 10%;
+    bottom: 1%;
+    right: 70%;
+}
+
+#PlayButton {
+    position: absolute;
+    top: 79%;
+    left: 40%;
+    bottom: 1%;
+    right: 40%;
+}
+
+#NextButton {
+    position: absolute;
+    top: 79%;
+    left: 70%;
+    bottom: 1%;
+    right: 10%;
+}
+/*/////////////////////////////*/
+
+/*弹出菜单*/
+/*////////////////////////////*/
+.mainMenu {
+    position: absolute;
+    bottom: 0;
+    left: calc(38.2vw / 1.382);
+    margin: auto;
+    width: calc(100vw - (38.2vw / 1.382));
+    height: calc( 38.2vw / 1.382);
+    border-radius: 0px calc(38.2vw / 1.382 / 10) calc(38.2vw / 1.382 / 10) 0px;
+    background-color: white;
+    z-index: 8;
+    display: none;
+    pointer-events: all;
+}
+/*菜单字体样式*/
+#LiveRoomNumLab, #LiveRoomNumInput, #LiveRoomNumInputButton,
+#DanmuCtrlLab, #DanmuOrderLab,
+#PlayModeLab, #PlayModeCheck, #PlayModeButton,
+#SpectrumLab, #MiniLab,
+#SongOrderLab, #SongOrderInput, #SongOrderButton {
+    font-size: calc(38.2vw / 1.382 * 0.1);
+    text-align: center;
+    line-height: calc(38.2vw / 1.382 * 0.2);
+    user-select: none;
+}
+/*直播间编号*/
+#LiveRoomNumLab {
+    height: calc( 38.2vw / 1.382 / 5);
+    width: calc((100vw - (38.2vw / 1.382)) / 4);
+    border: none;
+    margin-left: 0px;
+    transition: all 0s;
+    padding: 0 0;
+    border-radius: 0 0 0 0;
+    background-color: #009688;
+    color: #ffffff;
+}
+
+#LiveRoomNumInput {
+    height: calc( 38.2vw / 1.382 / 5);
+    width: calc((100vw - (38.2vw / 1.382)) / 2);
+    border: none;
+    transition: all 0s;
+    padding: 0 0;
+    border-radius: 0 0 0 0;
+}
+
+#LiveRoomNumInputButton {
+    height: calc( 38.2vw / 1.382 / 5);
+    width: calc((100vw - (38.2vw / 1.382)) / 4);
+    border: none;
+    margin-left: 0px;
+    transition: all 0s;
+    padding: 0 0;
+    border-radius: 0px calc(38.2vw / 1.382 / 10) 0px 0px;
+}
+
+#LiveRoomNumLab {
+    position: absolute;
+    top: 0;
+    bottom: 80%;
+    left: 0;
+    right: 75%;
+}
+
+#LiveRoomNumInput {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+#LiveRoomNumInputButton {
+    position: absolute;
+    top: 0;
+    bottom: 80%;
+    left: 75%;
+    right: 0;
+}
+/*弹幕控制*/
+#DanmuCtrlLab {
+    height: calc( 38.2vw / 1.382 / 5);
+    width: calc((100vw - (38.2vw / 1.382)) / 4);
+    border: none;
+    margin-left: 0px;
+    transition: all 0s;
+    padding: 0 0;
+    border-radius: 0 0 0 0;
+    background-color: #1ba784;
+    color: #ffffff;
+}
+
+#DanmuCtrlSwichDiv {
+    height: calc( 38.2vw / 1.382 / 5);
+    width: calc((100vw - (38.2vw / 1.382)) / 4);
+    border: none;
+    margin-left: 0px;
+    transition: all 0s;
+    padding: 0 0;
+    border-radius: 0 0 0 0;
+    color: #ffffff;
+}
+
+#DanmuCtrlLab {
+    position: absolute;
+    top: 20%;
+    bottom: 60%;
+    left: 0;
+    right: 75%;
+}
+
+#DanmuCtrlSwichDiv {
+    position: absolute;
+    top: 20%;
+    bottom: 60%;
+    left: 25%;
+    right: 50%;
+}
+
+/*弹幕点歌开关*/
+#DanmuOrderLab {
+    height: calc( 38.2vw / 1.382 / 5);
+    width: calc((100vw - (38.2vw / 1.382)) / 4);
+    border: none;
+    margin-left: 0px;
+    transition: all 0s;
+    padding: 0 0;
+    border-radius: 0 0 0 0;
+    background-color: #1ba784;
+    color: #ffffff;
+}
+
+#DanmuOrderSwichDiv {
+    height: calc( 38.2vw / 1.382 / 5);
+    width: calc((100vw - (38.2vw / 1.382)) / 4);
+    border: none;
+    margin-left: 0px;
+    transition: all 0s;
+    padding: 0 0;
+    border-radius: 0 0 0 0;
+    color: #ffffff;
+}
+
+#DanmuOrderLab {
+    position: absolute;
+    top: 20%;
+    bottom: 60%;
+    left: 50%;
+    right: 25%;
+}
+
+#DanmuOrderSwichDiv {
+    position: absolute;
+    top: 20%;
+    bottom: 60%;
+    left: 75%;
+    right: 0;
+}
+
+/*播放模式*/
+#PlayModeLab {
+    height: calc( 38.2vw / 1.382 / 5);
+    width: calc((100vw - (38.2vw / 1.382)) / 4);
+    border: none;
+    margin-left: 0px;
+    transition: all 0s;
+    padding: 0 0;
+    border-radius: 0 0 0 0;
+    background-color: #009688;
+    color: #ffffff;
+}
+
+#PlayModeCheck {
+    height: calc( 38.2vw / 1.382 / 5);
+    width: calc((100vw - (38.2vw / 1.382)) / 2);
+    border: none;
+    transition: all 0s;
+    text-align:left;
+    padding-left: calc(((100vw - (38.2vw / 1.382)) / 4) - (38.2vw / 1.382 * 0.25));
+    padding-right: calc(((100vw - (38.2vw / 1.382)) / 4) - (38.2vw / 1.382 * 0.4));
+    border-radius: 0 0 0 0;
+    background-color: #ffffff;
+}
+
+#PlayModeButton {
+    height: calc( 38.2vw / 1.382 / 5);
+    width: calc((100vw - (38.2vw / 1.382)) / 4);
+    border: none;
+    margin-left: 0px;
+    transition: all 0s;
+    padding: 0 0;
+    border-radius: 0 0 0 0;
+    background-color: #009688;
+    color: #ffffff;
+}
+
+#PlayModeLab {
+    position: absolute;
+    top: 40%;
+    bottom: 40%;
+    left: 0;
+    right: 75%;
+}
+
+#PlayModeCheck {
+    position: absolute;
+    top: 40%;
+    bottom: 40%;
+    left: 25%;
+}
+
+#PlayModeButton {
+    position: absolute;
+    top: 40%;
+    bottom: 40%;
+    left: 75%;
+    right: 0;
+}
+
+/*频谱开关*/
+#SpectrumLab {
+    height: calc( 38.2vw / 1.382 / 5);
+    width: calc((100vw - (38.2vw / 1.382)) / 4);
+    border: none;
+    margin-left: 0px;
+    transition: all 0s;
+    padding: 0 0;
+    border-radius: 0 0 0 0;
+    background-color: #1ba784;
+    color: #ffffff;
+}
+
+#SpectrumSwichDiv {
+    height: calc( 38.2vw / 1.382 / 5);
+    width: calc((100vw - (38.2vw / 1.382)) / 4);
+    border: none;
+    margin-left: 0px;
+    transition: all 0s;
+    padding: 0 0;
+    border-radius: 0 0 0 0;
+    color: #ffffff;
+}
+
+#SpectrumLab {
+    position: absolute;
+    top: 60%;
+    bottom: 20%;
+    left: 0;
+    right: 75%;
+}
+
+#SpectrumSwichDiv {
+    position: absolute;
+    top: 60%;
+    bottom: 20%;
+    left: 25%;
+    right: 50%;
+}
+/*mini模式开关*/
+#MiniLab {
+    height: calc( 38.2vw / 1.382 / 5);
+    width: calc((100vw - (38.2vw / 1.382)) / 4);
+    border: none;
+    margin-left: 0px;
+    transition: all 0s;
+    padding: 0 0;
+    border-radius: 0 0 0 0;
+    background-color: #1ba784;
+    color: #ffffff;
+}
+
+#MiniSwichDiv {
+    height: calc( 38.2vw / 1.382 / 5);
+    width: calc((100vw - (38.2vw / 1.382)) / 4);
+    border: none;
+    margin-left: 0px;
+    transition: all 0s;
+    padding: 0 0;
+    border-radius: 0 0 0 0;
+    color: #ffffff;
+}
+
+#MiniLab {
+    position: absolute;
+    top: 60%;
+    bottom: 20%;
+    left: 50%;
+    right: 25%;
+}
+
+#MiniSwichDiv {
+    position: absolute;
+    top: 60%;
+    bottom: 20%;
+    left: 75%;
+    right: 0;
+}
+
+/*歌单/歌曲ID提交*/
+#SongOrderLab {
+    height: calc( 38.2vw / 1.382 / 5);
+    width: calc((100vw - (38.2vw / 1.382)) / 4);
+    border: none;
+    margin-left: 0px;
+    transition: all 0s;
+    padding: 0 0;
+    border-radius: 0 0 0 0;
+    background-color: #009688;
+    color: #ffffff;
+}
+
+#SongOrderInput {
+    height: calc( 38.2vw / 1.382 / 5);
+    width: calc((100vw - (38.2vw / 1.382)) / 2);
+    border: none;
+    transition: all 0s;
+    padding: 0 0;
+    border-radius: 0 0 0 0;
+}
+
+#SongOrderButton {
+    height: calc( 38.2vw / 1.382 / 5);
+    width: calc((100vw - (38.2vw / 1.382)) / 4);
+    border: none;
+    margin-left: 0px;
+    transition: all 0s;
+    padding: 0 0;
+    border-radius: 0px 0px calc(38.2vw / 1.382 / 10) 0px;
+}
+
+#SongOrderLab {
+    position: absolute;
+    top: 80%;
+    bottom: 0;
+    left: 0;
+    right: 75%;
+}
+
+#SongOrderInput {
+    position: absolute;
+    top: 80%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+#SongOrderButton {
+    position: absolute;
+    top: 80%;
+    bottom: 0;
+    left: 75%;
+    right: 0;
+}
+/*////////////////////////////*/
+/*弹出歌单*/
+.songList {
+    position: absolute;
+    bottom: 0;
+    left: calc(38.2vw / 1.382);
+    margin: auto;
+    width: calc(100vw - (38.2vw / 1.382));
+    height: calc( 38.2vw / 1.382);
+    border-radius: 0px calc(38.2vw / 1.382 / 10) calc(38.2vw / 1.382 / 10) 0px;
+    background-color: #ddd;
+    z-index: 7;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    scrollbar-width: none; /*隐藏滚动条，兼容火狐*/
+    display: none;
+    pointer-events: all;
+}
+
+    /*隐藏滚动条，兼容chrome*/
+    .songList::-webkit-scrollbar {
+        display: none;
+    }
+
+.songListCell {
+    width: calc(100vw - (38.2vw / 1.382));
+    height: calc((( 38.2vw / 1.382) / 5) - (( 38.2vw / 1.382) / 80));
+    background-color: white;
+    margin-bottom: calc(( 38.2vw / 1.382) / 100);
+    margin-top: calc(( 38.2vw / 1.382) / 100);
+    overflow: hidden;
+}
+
+    .songListCell label {
+        position: absolute;
+        left: 5%;
+        display: block;
+        width: calc((100vw - (38.2vw / 1.382)) * 0.8);
+        height: calc((( 38.2vw / 1.382) / 5) - (( 38.2vw / 1.382) / 80));
+        font-size: calc(38.2vw / 1.382 * 0.1);
+        text-align: left;
+        line-height: calc(38.2vw / 1.382 * 0.2);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: inline
+    }
+
+    .songListCell .songListIcon {
+        font-size: calc(38.2vw / 1.382 * 0.1);
+        text-align: left;
+        line-height: calc(38.2vw / 1.382 * 0.2);
+        color: #ee3f4d;
+        display: inline
+    }
+    .songListCell .songListButton {
+        position: absolute;
+        right: 5%;
+        width: calc((( 38.2vw / 1.382) / 5) - (( 38.2vw / 1.382) / 50));
+        height: calc((( 38.2vw / 1.382) / 5) - (( 38.2vw / 1.382) / 50));
+        font-size: calc(38.2vw / 1.382 * 0.2);
+        text-align: center;
+        line-height: calc(38.2vw / 1.382 * 0.2);
+        padding: unset;
+        display: inline
+    }
+/*右侧底边栏*/
+.rightBottom {
+    position: absolute;
+    bottom: 0;
+    left: 27.641%;
+    margin: auto;
+    width: calc(100vw - (38.2vw / 1.382));
+    height: calc( 38.2vw / 1.382 * 0.5);
+    border-radius: 0px 0px calc(38.2vw / 1.382 / 10) 0px;
+    background-color: #eee;
+    pointer-events: all;
+}
+
+/*进度条*/
+#RogressBarDiv {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: auto;
+    width: calc(100vw - (38.2vw / 1.382));
+    height: calc( 38.2vw / 1.382 * 0.02);
+}
+
+#RogressBar {
+    background-color: #808080;
+    height: calc( 38.2vw / 1.382 * 0.02);
+}
+/*歌曲信息*/
+/*/////////////////////////////*/
+.songInfo {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    width: calc(100vw - (38.2vw / 1.382));
+    height: calc( 38.2vw / 1.382 * 0.48);
+    border-radius: 0px 0px calc(38.2vw / 1.382 / 10) 0px;
+    user-select: none;
+}
+
+.songName {
+    position: absolute;
+    bottom: 52%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: calc((100vw - (38.2vw / 1.382))* 0.8);
+    height: calc( 38.2vw / 1.382 * 0.22);
+    color: #000000;
+    font-size: calc(38.2vw / 1.382 * 0.18);
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.songInfoHr {
+    position: absolute;
+    bottom: 48%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: calc((100vw - (38.2vw / 1.382))* 0.6);
+    height: calc( 38.2vw / 1.382 * 0.01);
+    background-color: #808080;
+}
+
+.songArtist {
+    position: absolute;
+    bottom: 3%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: calc((100vw - (38.2vw / 1.382))* 0.8);
+    height: calc( 38.2vw / 1.382 * 0.22);
+    color: #000000;
+    font-size: calc(38.2vw / 1.382 * 0.18);
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+/*/////////////////////////////*/
+/*频谱*/
+.visualization {
+    position: absolute;
+    bottom: 100%;
+    right: 0;
+    margin: auto;
+    width: calc(100vw - (38.2vw / 1.382));
+    height: calc( 38.2vw / 1.382 * 0.5);
+    border-radius: 0px calc(38.2vw / 1.382 / 10) 0px 0px;
+    overflow: hidden;
+    display: none;
+}
+
+#VisualizationCanvas {
+    position: absolute;
+    right: 0;
+    margin: auto;
+    width: calc(100vw - (38.2vw / 1.382));
+    height: calc( 38.2vw / 1.382 * 0.5);
+    border-radius: 0px calc(38.2vw / 1.382 / 10) 0px 0px;
+    background-color: rgba(0,0,0,0.5);
+
+}
+/*/////////////////////////////*/
+/*歌词*/
+.lyric {
+    position: absolute;
+    bottom: 100%;
+    right: 0;
+    margin: auto;
+    width: calc(100vw - (38.2vw / 1.382));
+    height: calc( 38.2vw / 1.382 * 0.5);
+    border-radius: 0px calc(38.2vw / 1.382 / 10) 0px 0px;
+    overflow: hidden;
+    background-color: rgba(0,0,0,0.5);
+    user-select: none;
+}
+.lyricText {
+    position: absolute;
+    bottom: 52%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: calc((100vw - (38.2vw / 1.382))* 0.8);
+    height: calc( 38.2vw / 1.382 * 0.22);
+    color: #FFFFFF;
+    font-size: calc(38.2vw / 1.382 * 0.12);
+    line-height: calc(38.2vw / 1.382 * 0.24);
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.lyricHr {
+    position: absolute;
+    bottom: 48%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: calc((100vw - (38.2vw / 1.382))* 0.8);
+    height: calc( 38.2vw / 1.382 * 0.008);
+    background-color: #BDBDBD;
+    display: none;
+}
+.lyricTextTranslation {
+    position: absolute;
+    bottom: 3%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: calc((100vw - (38.2vw / 1.382))* 0.8);
+    height: calc( 38.2vw / 1.382 * 0.22);
+    color: #FFFFFF;
+    font-size: calc(38.2vw / 1.382 * 0.12);
+    line-height: calc(38.2vw / 1.382 * 0.24);
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
