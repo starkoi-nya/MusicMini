@@ -13,7 +13,7 @@ nodejs: <https://nodejs.org>
 哔哩哔哩直播弹幕跨域转发API: <https://github.com/starkoi-nya/biliDanMu>   
 详细安装方法请参照上方链接内说明，此处不再赘述   
 
-### 2. 下载本项目的tag    
+### 2. 下载本项目的releases    
 .exe可执行文件是已经打包好的electron安装包，可安装后直接使用    
 前端文件在`/dist`目录下，可自行部署，也可直接打开`/dist/index.html`使用    
 
