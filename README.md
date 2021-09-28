@@ -82,3 +82,5 @@ var ColudMusicAPI = "http://127.0.0.1:3000";
 var BiliDanMuAPI = "http://127.0.0.1:8514";   
 ```   
 若要生成使用自己接口的election桌面应用，需要安装election和electron-builder来对项目重新打包。        
+## 开源协议
+MIT
