@@ -45,7 +45,7 @@ function NextMusic(buttonClick = false) {
                 $("#SongName").append("音乐播放器");
                 //艺术家
                 $("#SongArtist").empty();
-                $("#SongArtist").append("黄油烤蛋糕");
+                $("#SongArtist").append("星恋幻象");
                 //封面
                 document.getElementById("SongImg").style.backgroundImage = "url(./img/songImg.jpg)";
                 //歌词
