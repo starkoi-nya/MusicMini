@@ -29,6 +29,9 @@ function MusicPlay(sid) {
                 $("#imgBackground").animate({ height: 'hide' }, 300);
                 document.getElementById("SongImg").style.backgroundImage = "url(" + picData + ")";
                 $("#imgBackground").animate({ height: 'show' }, 700);
+
+                //更新window控件显示信息
+                changeInfo(nameData, artistData, picData)
             })
         
             

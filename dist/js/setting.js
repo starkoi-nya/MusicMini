@@ -1,6 +1,6 @@
 ﻿//API地址
-var ColudMusicAPI = "http://starkoi.top:3000";
-var BiliDanMuAPI = "http://starkoi.top:8514";
+var ColudMusicAPI = "http://localhost:3000";
+var BiliDanMuAPI = "http://localhost:8514";
 
 //房间绑定
 var RoomID = "0";

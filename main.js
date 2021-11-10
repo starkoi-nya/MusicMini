@@ -34,23 +34,15 @@ app.whenReady().then(() => {
   globalShortcut.register('CommandOrControl+Left', () => {
     win.webContents.executeJavaScript("BeforeMusic()");
   })
-  globalShortcut.register('MediaPreviousTrack', () => {
-    win.webContents.executeJavaScript("BeforeMusic()");
-  })
+  
   //下一曲
   globalShortcut.register('CommandOrControl+Right', () => {
     win.webContents.executeJavaScript("NextMusic(true)");
   })
-  globalShortcut.register('MediaNextTrack', () => {
-    win.webContents.executeJavaScript("NextMusic(true)");
-  })
+  
   //播放/暂停
-  globalShortcut.register('MediaStop', () => {
-    win.webContents.executeJavaScript("Play()");
-  })
-  globalShortcut.register('MediaPlayPause', () => {
-    win.webContents.executeJavaScript("Play()");
-  })
+  
+  
   //音量加
   globalShortcut.register('CommandOrControl+Up', () => {
     win.webContents.executeJavaScript("VolumeUp()");
@@ -63,7 +55,7 @@ app.whenReady().then(() => {
   menu.append(new MenuItem({
     label: 'F11',
     accelerator: 'F11',
-    click: () => {
+      click: () => {
       //还没想好功能，除了全屏
     }
   }))
