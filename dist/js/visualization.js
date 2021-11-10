@@ -62,15 +62,19 @@
         analyser.getByteFrequencyData(voiceHeight);
         //console.log(voiceHeight);
         var maxHight = 1;
+        var minHight = 100;
         //绘制频谱效果
         // 自定义获取数组里边数据的频步
         var step = Math.floor(voiceHeight.length / (count * 1.5));
 
         visualization_ctx.clearRect(0, 0, visualization_W, visualization_H);
         for (i = 0; i < count; i++) {
-                if (voiceHeight[step * i] > maxHight) {
-                    maxHight = voiceHeight[step * i];
-                }  
+            if (voiceHeight[step * i] > maxHight) {
+                maxHight = voiceHeight[step * i];
+            }  
+            if (voiceHeight[step * i] < minHight) {
+                minHight = voiceHeight[step * i];
+            }
         }
         for (i = 0; i < count; i++) {
             var audioHeight = voiceHeight[step * i];
@@ -79,7 +83,7 @@
             // 绘制主线条
             visualization_ctx.fillStyle = visualization_color1;
             //参数（x坐标，y坐标，宽度，高度）
-            visualization_ctx.fillRect((i * 2), visualization_H, 1, visualization_H * (-audioHeight / maxHight));
+            visualization_ctx.fillRect((i * 2), visualization_H, 1, -visualization_H * ((audioHeight - (minHight * 0.8)) / (maxHight - (minHight * 1))));
         }
         window.requestAnimationFrame(draw);
     }
