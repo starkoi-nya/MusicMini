@@ -61,6 +61,9 @@ setInterval(function () {
                     }
                 }
             }
+        }).fail(function () {//错误处理
+            TopMsg("弹幕获取失败",'', true)
+            console.log("[网络错误]弹幕服务器无响应或者返回了错误的数据")
         })
     }
 }, 10000);

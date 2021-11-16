@@ -55,8 +55,9 @@ function getSongList(SongListID) {
             })
         }
     }).fail(function () {//错误处理
+        TopMsg("歌单获取失败", '', true)
         $("#SongOrderInput").val("");
         $("#SongOrderInput").attr("placeholder", "服务器无响应或返回数据有误");
-        console.log("[网络错误]服务器无响应或者返回了错误的数据")
+        console.log("[网络错误]网易云API服务器无响应或者返回了错误的数据")
     })
 }
