@@ -3,14 +3,14 @@ $(document).ready(function () {
     var Music = document.getElementById("Music");
     Music.addEventListener("ended", function () {
         BeforeSign = false;
-        NextMusic()
+        NextMusic(false,true)
     });
 });
 //下一首歌
 let nextMusicCDsign = true;
-function NextMusic(buttonClick = false) {
+function NextMusic(buttonClick = false, CD = false) {
     //切歌CD
-    if (nextMusicCDsign) {
+    if (nextMusicCDsign || CD) {
         nextMusicCDsign = false;
         setTimeout(function () {
             nextMusicCDsign = true;
@@ -107,7 +107,7 @@ function NextMusic(buttonClick = false) {
                 PlayIconChange(play_list[music_num])
                 //添加id到历史记录
                 if ((Number(PlayMode) != 1) || (buttonClick == true)) {
-                before_list.unshift(play_list[music_num])
+                    before_list.unshift(play_list[music_num])
                 }
             }
         }

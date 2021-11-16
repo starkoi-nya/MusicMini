@@ -22,7 +22,7 @@ setInterval(function () {
                             } else if (adminMsg[i].text.slice(0, 3) == "#切歌") {
                                 //强行切换歌曲
                                 TopMsg("已切歌", "", false);
-                                NextMusic(true);
+                                NextMusic(true,true);
                             } else if (adminMsg[i].text.slice(0, 4) == "#提示 ") {
                                 //发送顶部提示
                                 TopMsg("提示", adminMsg[i].text.slice(4), true);

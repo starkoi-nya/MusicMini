@@ -6,7 +6,7 @@ $(document).ready(function () {
         navigator.mediaSession.setActionHandler('pause', function () { Play('pause') });
         navigator.mediaSession.setActionHandler('stop', function () { Play('pause') });
         navigator.mediaSession.setActionHandler('previoustrack', function () { BeforeMusic() });
-        navigator.mediaSession.setActionHandler('nexttrack', function () { NextMusic(true) });
+        navigator.mediaSession.setActionHandler('nexttrack', function () { NextMusic(true,false) });
         //设定默认信息
         navigator.mediaSession.metadata = new MediaMetadata({
             title: '音乐播放器',

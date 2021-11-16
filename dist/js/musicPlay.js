@@ -1,9 +1,8 @@
-﻿//歌曲播放函数（歌曲MP3，封面，歌名，艺术家，歌词）
-var code;
+﻿//歌曲播放函数（歌曲MP3）
 function MusicPlay(sid) {
     //获取歌曲链接
-    $.getJSON(ColudMusicAPI+"/song/url", { id: sid }, function (data) {
-        code = eval(data).data[0].code;
+    $.getJSON(ColudMusicAPI + "/song/url", { id: sid }, function (data) {
+      var code = eval(data).data[0].code;
         if (Number(code) == 200) {
             //播放音乐
             var songData = eval(data).data[0].url;
@@ -14,14 +13,22 @@ function MusicPlay(sid) {
             //刷新播放按钮
             $("#PlayButtonIcon").empty();
             $("#PlayButtonIcon").append("&#xe651;");
-
+            //获取歌曲信息
+            MusicInfo(sid);
+        } else {
+            TopMsg("歌曲无版权，已切歌", '', true)
+            console.log("[常规错误]歌曲无版权")
+            NextMusic(true,true);
         }
     }).fail(function () {//错误处理
-        TopMsg("歌曲播放链接获取失败",'', true)
+        TopMsg("歌曲播放链接获取失败", '', true)
         console.log("[网络错误]歌曲播放链接获取失败")
     })
 
-    //获取歌曲信息
+
+}
+//歌曲信息获取函数（封面，歌名，艺术家，歌词）
+function MusicInfo(sid) {
     $.getJSON(ColudMusicAPI + "/song/detail", { ids: sid }, function (data) {
         //歌名
         var nameData = eval(data).songs[0].name;

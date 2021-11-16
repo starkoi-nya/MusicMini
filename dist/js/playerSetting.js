@@ -168,7 +168,7 @@ $(document).ready(function () {
         if (firstPlaySign == true) {
             Play();
         } else {
-            NextMusic(true);
+            NextMusic(true,false);
         }
     })
     hideListTime = 10;

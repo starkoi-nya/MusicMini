@@ -50,7 +50,7 @@ function GetOrederList(songName) {
             $(".orderListDelButton" + sid).click(function () {
                 var sid = Number($(this).parent().children("a").text())
                 if (orderListDelID == sid) {
-                    NextMusic()
+                    NextMusic(false,true)
                 } else {
                     OrederListDel(sid);
                 }
