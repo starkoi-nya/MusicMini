@@ -18,6 +18,7 @@ function MusicPlay(sid) {
         } else {
             TopMsg("歌曲无版权，已切歌", '', true)
             console.log("[常规错误]歌曲无版权")
+            before_list.shift(play_list[music_num])
             NextMusic(true,true);
         }
     }).fail(function () {//错误处理
