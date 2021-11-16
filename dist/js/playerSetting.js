@@ -18,6 +18,16 @@ $(document).ready(function () {
             HideList()
             hideListTimeSign = true;
         }
+        //自动滚动歌单
+        setTimeout(function () {
+            try {
+                $(".songList").animate({
+                    scrollTop: ($(".songList").scrollTop() + $(".songListIcon[style='']").parent().position().top) - ($(".songListIcon[style='']").parent().outerHeight() * 2)
+                }, 300)
+            } catch (err) {
+                console.log("[常规警告]暂无歌单,自动滚动无法执行")
+            }
+        }, 500)
     });
 });
 

@@ -3,7 +3,7 @@ var firstSongId = 0;
 var music_num = -1;
 function getSongList(SongListID) {
     var lid = SongListID;
-    $.getJSON(ColudMusicAPI+"/playlist/detail", { id: lid }, function (data) {
+    $.getJSON(ColudMusicAPI + "/playlist/detail", { id: lid }, function (data) {
         var l_data = eval(data).playlist.trackIds;
         //console.log(l_data.length)
         if (l_data.length == 0) {
@@ -23,7 +23,7 @@ function getSongList(SongListID) {
             }
             firstSongId = play_list[0];
             var get_id_list = play_list.toString()
-            $.getJSON(ColudMusicAPI+"/song/detail", { ids: get_id_list }, function (data) {
+            $.getJSON(ColudMusicAPI + "/song/detail", { ids: get_id_list }, function (data) {
                 var ls_data = eval(data).songs;
                 for (var i in ls_data) {
                     play_list_name[i] = ls_data[i].name
@@ -54,13 +54,9 @@ function getSongList(SongListID) {
                 })
             })
         }
+    }).fail(function () {//错误处理
+        $("#SongOrderInput").val("");
+        $("#SongOrderInput").attr("placeholder", "服务器无响应或返回数据有误");
+        console.log("[网络错误]服务器无响应或者返回了错误的数据")
     })
-
-    //返回错误处理
-    setTimeout(function () {
-        if ($("#SongOrderInput").val() == lid) {
-            $("#SongOrderInput").val("");
-            $("#SongOrderInput").attr("placeholder", "服务器嗝屁，或者ID有误");
-        }
-    }, 1000)
 }

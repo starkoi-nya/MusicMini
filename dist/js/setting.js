@@ -50,6 +50,7 @@ $(document).ready(function () {
             option[i].selected = true;
         }
         PlayMode = $("#PlayModeCheck").find("option:selected").attr("value");
+        //console.log(PlayMode);
     })
     
 })
@@ -133,4 +134,4 @@ function VolumeDown(){
         document.getElementById("Music").volume = 0;
     }
 }
-//
+
