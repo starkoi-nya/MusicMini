@@ -36,10 +36,22 @@ $(document).ready(function () {
 //播放模式
 var PlayMode = 0;
 $(document).ready(function () {
-    $("#PlayModeButton , #PlayModeCheck").click(function () {
+    $("#PlayModeCheck").click(function () {
         PlayMode = $("#PlayModeCheck").find("option:selected").attr("value");
         //console.log(PlayMode);
     })
+    var option = document.getElementById("PlayModeCheck").getElementsByTagName("option");//得到数组option
+    $("#PlayModeButton").click(function () {
+        var i = $("#PlayModeCheck").find("option:selected").attr("value");
+        if (i >= 2) {
+            option[0].selected = true;
+        } else {
+            i++;
+            option[i].selected = true;
+        }
+        PlayMode = $("#PlayModeCheck").find("option:selected").attr("value");
+    })
+    
 })
 //频谱开关
 var SpectrumSwich = true;
