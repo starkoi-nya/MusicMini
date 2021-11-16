@@ -27,6 +27,11 @@ $(document).ready(function () {
         getSongList(SongListID)
         //console.log('歌单ID', getUrlSearch("SongListID"));
     }
+    if (getUrlSearch("PlayMode") != null) {
+        var PlayModeID = getUrlSearch("PlayMode")
+        PlayModeChange(PlayModeID)
+        //console.log('歌单ID', getUrlSearch("SongListID"));
+    }
 })
 
 // 调用方法

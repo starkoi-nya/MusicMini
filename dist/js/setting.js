@@ -52,8 +52,18 @@ $(document).ready(function () {
         PlayMode = $("#PlayModeCheck").find("option:selected").attr("value");
         //console.log(PlayMode);
     })
-    
 })
+function PlayModeChange(mode) {
+    if ((mode >= 0) && (mode <= 2)) {
+        PlayMode = mode;
+        var option = document.getElementById("PlayModeCheck").getElementsByTagName("option");
+        option[mode].selected = true;
+    } else {
+        TopMsg("播放模式有误", '', true)
+        console.log("[参数错误]播放模式有误")
+    }
+}
+
 //频谱开关
 var SpectrumSwich = true;
 $(document).ready(function () {

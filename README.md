@@ -25,8 +25,8 @@ nodejs: <https://nodejs.org>
 不建议通过obs二次调整宽高，以免频谱出现摩尔纹    
 #### 地址栏参数    
 可以通过设置地址栏参数来导入歌单和绑定直播间    
-URL参数:SongListID<网易云音乐歌单ID>，RoomID<B站直播间ID>   
-例子:`http://127.0.0.1?SongListID=959808737&RoomID=935815`    
+URL参数:SongListID<网易云音乐歌单ID>，RoomID<B站直播间ID> ,PlayMode<数值>（0=列表循环，1=单曲循环，2随机播放）  
+例子:`http://127.0.0.1?SongListID=959808737&RoomID=935815&PlayMode=2`    
 
 ### 4. election桌面端注意事项及快捷键    
 #### 注意事项:   
